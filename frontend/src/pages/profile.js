@@ -525,7 +525,7 @@ function Profile() {
                     <Form.Item  >
 
                   
-                    <Input required="true" placeholder="New Name" type='text' value={student.studentname} onChange={(e) => { {student.studentname} }} />
+                    {/* <Input required="true" placeholder="New Name" type='text' value={student.studentname} onChange={(e) => { {student.studentname} }} /> */}
                    <Input required="true" placeholder="New Name" type='text' value={student.schoolname} onChange={(e) => { setNewname(e.target.value) }} />
                    <Input required="true" placeholder="New Name" type='text' value="School Location" onChange={(e) => { setNewname(e.target.value) }} />
                    <Input required="true" placeholder="New Name" type='text' value={student.drivername} onChange={(e) => { setNewname(e.target.value) }} />

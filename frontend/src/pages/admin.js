@@ -594,7 +594,7 @@ function Admin() {
                   myHeaders1.append("Content-Type", "application/json");
 
                   var raw1 = JSON.stringify({
-                    "_id": Userr._id,
+                    "_id": student._id,
 
                   });
 

@@ -124,7 +124,7 @@ const Searchbarandbtn = styled.p`
 `;
 
 
-export default function fee() {
+export default function Fee() {
   const emaillll = localStorage.getItem('email')
   const [student, setstudent] = useState([""])
   useEffect(async() => {
