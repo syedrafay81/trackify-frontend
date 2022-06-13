@@ -215,133 +215,133 @@ const Services = () => {
 
 
 
-  const handleInputs = (e) => {
-    setSearchvalue(e.target.value);
-  }
+  // const handleInputs = (e) => {
+  //   setSearchvalue(e.target.value);
+  // }
 
 
 
-  const onFinish = async() => {
-    // console.log("Search  ", Searchvalue);
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  // const onFinish = async() => {
+  //   // console.log("Search  ", Searchvalue);
+  //   var myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
 
-    var raw1 = JSON.stringify({
-      "Carname": Searchvalue
-    });
+  //   var raw1 = JSON.stringify({
+  //     "Carname": Searchvalue
+  //   });
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw1,
-      redirect: 'follow'
-    };
+  //   var requestOptions = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw1,
+  //     redirect: 'follow'
+  //   };
 
-   const res1 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions)
+  //  const res1 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions)
    
-   if(res1.status === 200 ){ 
+  //  if(res1.status === 200 ){ 
      
-    res1.json().then(result => setCar(result))   
-    setSearchvalue()
-  }
-   else{   
+  //   res1.json().then(result => setCar(result))   
+  //   setSearchvalue()
+  // }
+  //  else{   
      
-    var raw2 = JSON.stringify({
-      "email": Searchvalue
-    });
+  //   var raw2 = JSON.stringify({
+  //     "email": Searchvalue
+  //   });
 
-    var requestOptions2 = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw2,
-      redirect: 'follow'
-    };
+  //   var requestOptions2 = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw2,
+  //     redirect: 'follow'
+  //   };
 
-   const res2 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions2)
-   if(res2.status === 200 ){ 
+  //  const res2 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions2)
+  //  if(res2.status === 200 ){ 
      
-    res2.json().then(result => setCar(result)) 
-    setSearchvalue()
-  }
-  else{   
+  //   res2.json().then(result => setCar(result)) 
+  //   setSearchvalue()
+  // }
+  // else{   
      
-    var raw3 = JSON.stringify({
-      "Model": Searchvalue
-    });
+  //   var raw3 = JSON.stringify({
+  //     "Model": Searchvalue
+  //   });
 
-    var requestOptions3 = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw3,
-      redirect: 'follow'
-    };
+  //   var requestOptions3 = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw3,
+  //     redirect: 'follow'
+  //   };
 
-   const res3 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions3)
-   if(res3.status === 200 ){ 
+  //  const res3 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions3)
+  //  if(res3.status === 200 ){ 
      
-    res3.json().then(result => setCar(result))
-    setSearchvalue()
-  }
-  else{   
+  //   res3.json().then(result => setCar(result))
+  //   setSearchvalue()
+  // }
+  // else{   
      
-    var raw4 = JSON.stringify({
-      "username": Searchvalue
-    });
+  //   var raw4 = JSON.stringify({
+  //     "username": Searchvalue
+  //   });
 
-    var requestOptions4 = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw4,
-      redirect: 'follow'
-    };
+  //   var requestOptions4 = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw4,
+  //     redirect: 'follow'
+  //   };
 
-   const res4 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions4)
-   if(res4.status === 200 ){ 
-    setSearchvalue()
-    res4.json().then(result => setCar(result))
+  //  const res4 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions4)
+  //  if(res4.status === 200 ){ 
+  //   setSearchvalue()
+  //   res4.json().then(result => setCar(result))
   
-  }
+  // }
 
-  else{   
-     var xx = (Searchvalue[2]+ Searchvalue[3]+ Searchvalue[4] + Searchvalue[5] + Searchvalue[6] + Searchvalue[7] + Searchvalue[8]  + Searchvalue[9] + Searchvalue[10])
-    //  var i= 2;
-    //  for ( i  ; i == 0; i=i+1) {
-    //   var xx;
-    //   var xx =xx + (Searchvalue[i]
+  // else{   
+  //    var xx = (Searchvalue[2]+ Searchvalue[3]+ Searchvalue[4] + Searchvalue[5] + Searchvalue[6] + Searchvalue[7] + Searchvalue[8]  + Searchvalue[9] + Searchvalue[10])
+  //   //  var i= 2;
+  //   //  for ( i  ; i == 0; i=i+1) {
+  //   //   var xx;
+  //   //   var xx =xx + (Searchvalue[i]
 
 
-    //  }
+  //   //  }
     
     
     
-     console.log(xx)
-    var raw5 = JSON.stringify({
-      "number": xx
-    });
+  //    console.log(xx)
+  //   var raw5 = JSON.stringify({
+  //     "number": xx
+  //   });
 
-    var requestOptions5 = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw5,
-      redirect: 'follow'
-    };
+  //   var requestOptions5 = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw5,
+  //     redirect: 'follow'
+  //   };
 
-   const res5 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions5)
-   if(res5.status === 200 ){ 
-    setSearchvalue()
-    res5.json().then(result => setCar(result))
+  //  const res5 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions5)
+  //  if(res5.status === 200 ){ 
+  //   setSearchvalue()
+  //   res5.json().then(result => setCar(result))
   
-  }else { message.info("Car not fund please enter valid Car model or Car company name or owner name or owners number")  }
+  // }else { message.info("Car not fund please enter valid Car model or Car company name or owner name or owners number")  }
 
 
 
-  }}}}}
+  // }}}}}
 
   
-  const myImg = '../Carimages/logo512.png'
+  // const myImg = '../Carimages/logo512.png'
 
-  const Path = "Carimages/"
-  const email = localStorage.getItem('email')
+  // const Path = "Carimages/"
+  // const email = localStorage.getItem('email')
 
   return (
     <> <Navbar /><div style={({  height: `80px` })}> </div>
@@ -358,7 +358,7 @@ const Services = () => {
 
 
         <Search>
-          <Form onFinish={onFinish}>
+          <Form >
 
             <Searchbarandbtn>  <Input type="text" name="search" required="true" placeholder="Search Student by name" />
 

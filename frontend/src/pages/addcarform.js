@@ -10,8 +10,10 @@ import Navbar from '../components/Navbar/index';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { useHistory } from 'react-router-dom'
-
 import { Btn } from "../components/Button"
+const { Option } = Select;
+
+
 
 const AppContainer = styled.div`
   
@@ -470,12 +472,12 @@ function Addcarform() {
                 optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
               }
             >
-              {/* <Option value="BeaconHouse School System">BeaconHouse School System</Option>
+              <Option value="BeaconHouse School System">BeaconHouse School System</Option>
               <Option value="Karachi Grammar School">Karachi Grammar School</Option>
               <Option value="The City School">The City School</Option>
               <Option value="Lahore Grammar School">Lahore Grammar School</Option>
               <Option value="Foundation Public School">Foundation Public School</Option>
-              <Option value="Haque Academy School">Haque Academy School</Option> */}
+              <Option value="Haque Academy School">Haque Academy School</Option>
             </Select><Marginer direction="vertical" margin={20} />
 
 
@@ -492,12 +494,12 @@ function Addcarform() {
                 optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
               }
             >
-              {/* <Option value="II Talwar">II Talwar</Option>
+              <Option value="II Talwar">II Talwar</Option>
               <Option value="DHA Phase 2">DHA Phase 2</Option>
               <Option value="North Nazimabad">North Nazimabad</Option>
               <Option value="Gulistan-E- Johor">Gulistan-E- Johor</Option>
               <Option value="University Road<">University Road</Option>
-              <Option value="Bilawal Chowrangi">Bilawal Chowrangi</Option> */}
+              <Option value="Bilawal Chowrangi">Bilawal Chowrangi</Option>
             </Select><Marginer direction="vertical" margin={20} />
 
 
@@ -514,12 +516,12 @@ function Addcarform() {
                 optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
               }
             >
-              {/* <Option value="DHA Phase 8">DHA Phase 8</Option>
+              <Option value="DHA Phase 8">DHA Phase 8</Option>
               <Option value="Gulshan-E-Iqbal">Gulshan-E-Iqbal</Option>
               <Option value="Hyderi">Hyderi</Option>
               <Option value="New Karachi">New Karachi</Option>
               <Option value="P.E.C.H.S Society">P.E.C.H.S Society</Option>
-              <Option value="Malir Cantt">Malir Cantt</Option> */}
+              <Option value="Malir Cantt">Malir Cantt</Option>
             </Select><Marginer direction="vertical" margin={20} />
 
             <p>upload picture of your child</p>  <input type="file"
