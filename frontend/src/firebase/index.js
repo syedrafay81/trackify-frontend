@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD2rp8zmynddCNFXYABLhUTiTax5gGmef0",
-  authDomain: "rent-a-car-5dabd.firebaseapp.com",
-  projectId: "rent-a-car-5dabd",
-  storageBucket: "rent-a-car-5dabd.appspot.com",
-  messagingSenderId: "197068102895",
-  appId: "1:197068102895:web:0a5155082dd1ca8a9bcf1a"
+  apiKey: "AIzaSyCZbSd-Q45E4ptlbGRNoTSkHRBIBklwzaM",
+  authDomain: "trackify-c18b5.firebaseapp.com",
+  projectId: "trackify-c18b5",
+  storageBucket: "trackify-c18b5.appspot.com",
+  messagingSenderId: "928045354543",
+  appId: "1:928045354543:web:5b3f2d87d331ff210040da",
 };
 
 firebase.initializeApp(firebaseConfig);

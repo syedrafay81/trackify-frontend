@@ -174,11 +174,13 @@ const Itemcar = styled.div`
 
 const Services = () => {
   const emaillll = localStorage.getItem('email')
-  if (emaillll === null ){ localStorage.setItem('email','null')   }
+  if (emaillll === null) { localStorage.setItem('email', 'null') }
 
   const [student, setstudent] = useState([""])
 
-  useEffect(async() => {
+
+
+  useEffect(async () => {
 
 
     var myHeaders = new Headers();
@@ -196,13 +198,13 @@ const Services = () => {
       redirect: 'follow'
     };
 
-  
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
+
+    // var requestOptions = {
+    //   method: 'POST',
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: 'follow'
+    // };
 
     const res = await fetch("http://localhost:5000/getstudentfordriver", requestOptions)
 
@@ -215,8 +217,7 @@ const Services = () => {
 
 
 
-  // const handleInputs = (e) => {
-  //   setSearchvalue(e.target.value);
+  // const handleInputs = 
   // }
 
 
@@ -238,14 +239,14 @@ const Services = () => {
   //   };
 
   //  const res1 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions)
-   
+
   //  if(res1.status === 200 ){ 
-     
+
   //   res1.json().then(result => setCar(result))   
   //   setSearchvalue()
   // }
   //  else{   
-     
+
   //   var raw2 = JSON.stringify({
   //     "email": Searchvalue
   //   });
@@ -259,12 +260,12 @@ const Services = () => {
 
   //  const res2 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions2)
   //  if(res2.status === 200 ){ 
-     
+
   //   res2.json().then(result => setCar(result)) 
   //   setSearchvalue()
   // }
   // else{   
-     
+
   //   var raw3 = JSON.stringify({
   //     "Model": Searchvalue
   //   });
@@ -278,12 +279,12 @@ const Services = () => {
 
   //  const res3 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions3)
   //  if(res3.status === 200 ){ 
-     
+
   //   res3.json().then(result => setCar(result))
   //   setSearchvalue()
   // }
   // else{   
-     
+
   //   var raw4 = JSON.stringify({
   //     "username": Searchvalue
   //   });
@@ -299,7 +300,7 @@ const Services = () => {
   //  if(res4.status === 200 ){ 
   //   setSearchvalue()
   //   res4.json().then(result => setCar(result))
-  
+
   // }
 
   // else{   
@@ -311,9 +312,9 @@ const Services = () => {
 
 
   //   //  }
-    
-    
-    
+
+
+
   //    console.log(xx)
   //   var raw5 = JSON.stringify({
   //     "number": xx
@@ -330,31 +331,31 @@ const Services = () => {
   //  if(res5.status === 200 ){ 
   //   setSearchvalue()
   //   res5.json().then(result => setCar(result))
-  
+
   // }else { message.info("Car not fund please enter valid Car model or Car company name or owner name or owners number")  }
 
 
 
   // }}}}}
 
-  
+
   // const myImg = '../Carimages/logo512.png'
 
   // const Path = "Carimages/"
   // const email = localStorage.getItem('email')
 
   return (
-    <> <Navbar /><div style={({  height: `80px` })}> </div>
+    <> <Navbar /><div style={({ height: `80px` })}> </div>
 
-<div style={({ height: `10px` })}> </div>
+      <div style={({ height: `10px` })}> </div>
 
 
 
       <AppContainer>
-      
-     
-    
-   
+
+
+
+
 
 
         <Search>
@@ -371,21 +372,78 @@ const Services = () => {
 
 
         <Carlist>
-        {student.map((student) => (<>
+          {student.map((student) => (<>
             <Carchart><Cardetails>
               <div>
-              <h2>{student.studentname}</h2>
-                  <h5>School Name : {student.schoolname}</h5>
-                  <h5>School Location : {student.drop}</h5>
-                  <h5>Bus Driver : {student.drivername}</h5>
-                  <h5>Bus Driver ID : {student.busnumberplate}</h5>
+                <h2>{student.studentname}</h2>
+                <h5>School Name : {student.schoolname}</h5>
+                <h5>School Location : {student.drop}</h5>
+                <h5>Bus Driver : {student.drivername}</h5>
+                <h5>Bus Driver ID : {student.busnumberplate}</h5>
 
 
-              <Link to="/bookingform"> <Btn 
+                <Btn onClick={async () => {
+                  var myHeaders = new Headers();
+                  myHeaders.append("Content-Type", "application/json");
+
+                  var raw = JSON.stringify({
+
+                    "id": student._id
+                  });
 
 
 
-         >on board</Btn> </Link>
+                  var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                  };
+
+                  const res = await fetch("http://localhost:5000/studentstatus", requestOptions)
+
+                  if (res.status === 200) {
+
+                    res.json().then(result => setstudent(result))
+                  }
+                }}
+
+
+
+                >on board</Btn>   
+                
+                
+                
+                
+                 <Btn onClick={async () => {
+                  var myHeaders = new Headers();
+                  myHeaders.append("Content-Type", "application/json");
+
+                  var raw = JSON.stringify({
+
+                    "id": student._id
+                  });
+
+
+
+                  var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                  };
+
+                  const res = await fetch("http://localhost:5000/studentstatusreached", requestOptions)
+
+                  if (res.status === 200) {
+
+                    res.json().then(result => setstudent(result))
+                  }
+                }}
+
+
+
+                >Reached</Btn>
 
 
               </div> </Cardetails>
@@ -393,10 +451,10 @@ const Services = () => {
 
 
             </Carchart>
-            </>))}
+          </>))}
 
 
-        
+
 
         </Carlist>
 

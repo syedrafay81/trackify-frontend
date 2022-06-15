@@ -445,7 +445,7 @@ function Admin() {
 
 
 
-
+         <h1 style={({ marginTop:"100px" })}>User Info</h1>         
         <UserinfoContainer>
 
           {Totaluser.map((Userr) => (<>

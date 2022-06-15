@@ -31,23 +31,9 @@ import banner3 from "../banners/3.png"
 import banner4 from "../banners/4.png"
 import img from "../images/Logo1.png"
 
-function Map() {
 
 
-  return (<>
-    <GoogleMap defaultZoom={15} defaultCenter={{ lat: 24.8673535, lng: 67.0849856 }} >
 
-      <Marker
-        key='folio3'
-        position={{
-          lat: 24.867343,
-          lng: 67.0847641
-        }} />
-    </GoogleMap></>
-  );
-}
-
-const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 
 const AppContainer = styled.div`
@@ -352,7 +338,7 @@ justify-content: center;
 const Carchart = styled.div`
 box-shadow: 0px 0px 2px 5px;
 width: 500px;
-height: 200px;
+height: 220px;
 display: flex;
 grid-template-columns: auto auto auto auto;
 flex-direction: row;
@@ -420,13 +406,45 @@ const Home = () => {
   if (emaillll === null) { localStorage.setItem('email', 'null') }
 
   const [active, setActive] = useState("pularCars");
-  
+
   const [TotalUsers, setTotalUsers] = useState(0);
   const [student, setstudent] = useState([""])
   const [Totaloffices, seTotaloffices] = useState(1);
   const email = localStorage.getItem('email')
 
-  useEffect(async() => {
+  const [longitude, setlongitude] = useState(24.867343);
+  const [latitude, setlatitude] = useState(67.0847641);
+
+  function Map() {
+
+
+    return (<>
+      <GoogleMap defaultZoom={15} defaultCenter={{ lat: 24.8673535, lng: 67.0849856 }} >
+  
+        <Marker
+          key='student'
+          position={{
+            lat: longitude,
+            lng: latitude
+          }} />
+      </GoogleMap></>
+    );
+  }
+
+  const MapWrapped = withScriptjs(withGoogleMap(Map));
+
+
+
+
+
+
+
+
+
+
+
+
+  useEffect(async () => {
 
 
     var myHeaders = new Headers();
@@ -444,7 +462,7 @@ const Home = () => {
       redirect: 'follow'
     };
 
-  
+
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -468,12 +486,6 @@ const Home = () => {
 
 
 
-  // const switchTolocation = () => {
-
-  //   setTimeout(() => {
-  //     setActive("location");
-  //   }, 200);
-  // };
 
   const switchTopularCars = () => {
 
@@ -512,30 +524,35 @@ const Home = () => {
 
 
             <Carlist>
-            {student.map((student) => (<>
-              <Carchart><Cardetails>
-                <div>
-                  <h2>{student.studentname}</h2>
-                  <h5>School Name : {student.schoolname}</h5>
-                  <h5>School Location : {student.drop}</h5>
-                  <h5>Bus Driver : {student.drivername}</h5>
-                  <h5>Bus Driver ID : {student.busnumberplate}</h5>
-
-                  <Link to=""> <Btn >Track Bus</Btn> </Link>
-
-
-                </div> </Cardetails>
-                <Image src={student.studentimage} alt="Hondacivic" width='50%' height='96%' />
+              {student.map((student) => (<>
+                <Carchart><Cardetails>
+                  <div>
+                    <h2>{student.studentname}</h2>
+                    <h5>School Name : {student.schoolname}</h5>
+                    <h5>School Location : {student.drop}</h5>
+                    <h5>Bus Driver : {student.drivername}</h5>
+                    <h5>Bus Driver ID : {student.busnumberplate}</h5>
+                    {student.studentstatus === "onboard" && <>
+                      <Btn onClick={() => {
 
 
-              </Carchart>
+                        setActive("location");
+                      }}>Track Bus</Btn>
+                    </>
+                    }
+
+                  </div> </Cardetails>
+                  <Image src={student.studentimage} alt="Hondacivic" width='50%' height='96%' />
+
+
+                </Carchart>
               </>))}
 
             </Carlist>
 
 
 
-    
+
 
 
 

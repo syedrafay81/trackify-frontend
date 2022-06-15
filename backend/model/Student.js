@@ -84,6 +84,12 @@ const trackify = new mongoose.Schema({
         required: true,
     },
 
+    studentstatus: {
+        type: String,
+       
+    },
+
+
 
 
 });

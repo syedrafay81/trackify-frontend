@@ -425,5 +425,54 @@ router.post("/deleteUserrdattaaa", async (req, res) => {
 
 
 
+router.post("/studentstatus", async (req, res) => {
+
+    console.log(req.body)
+
+
+    let x = req.body.id
+    // console.log(x)
+
+    try {
+
+
+        const reqstudent = await Student.updateOne( { "_id": objectId(x) }, { $set: { studentstatus: "onboard"} }); 
+        console.log(reqstudent)
+        // res.status(200).json(reqstudent);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(422).json("error");
+    }
+
+});
+
+
+
+router.post("/studentstatusreached", async (req, res) => {
+
+    console.log(req.body)
+
+
+    let x = req.body.id
+    // console.log(x)
+
+    try {
+
+
+        const reqstudent = await Student.updateOne( { "_id": objectId(x) }, { $set: { studentstatus: "reached"} }); 
+        console.log(reqstudent)
+        // res.status(200).json(reqstudent);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(422).json("error");
+    }
+
+});
+
+
 
 module.exports = router;
