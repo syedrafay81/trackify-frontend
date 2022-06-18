@@ -129,7 +129,7 @@ router.post('/updateuserdata', async (req, res,) => {
                 if (Newpassword.length !== 0) {
 
                     await User.updateOne({ "_id": objectId(id) }, { $set: { name: name, password: Newpassword } });
-                    res.status(200).json("Prifile Updated");
+                    res.status(200).json("Profile Updated");
 
                 }
 
@@ -140,13 +140,14 @@ router.post('/updateuserdata', async (req, res,) => {
                 else if (Newpassword.length === 0) {
 
                     await User.updateOne({ "_id": objectId(id) }, { $set: { name: name, password: userfundd.password } });
-                    res.status(200).json("Prifile Updated");
+                    res.status(200).json("Profile Updated");
                 }
 
 
 
             } else {
 
+                res.status(422).json("Please Enter correct Old Password");
                 res.status(422).json("Please Enter correct Old Password");
 
             }

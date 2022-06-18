@@ -34,12 +34,12 @@ export function FooterContainer() {
     };
     return (
         <>  <Modal showModal={showModal} setShowModal={setShowModal} />
-            <Footer>
+            <Footer style={{backgroundColor: "lightblue"}}>
                 <Footer.Wrapper>
                    
                        
                        
-                           Copyright © 2021 Trackify Inc.
+                           Copyright © 2022 Trackify Inc.
                      
 
                     

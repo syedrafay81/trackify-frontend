@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Whyusimgtom from "../images/whyustop.PNG";
-import partnerimgtext from "../images/partnerimgtext.png";
 import { Carousel as Carousel2, Image } from 'antd';
 import { withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps";
 import Happyclient from '@material-ui/icons/SentimentVerySatisfied';
@@ -12,24 +10,6 @@ import { Link } from 'react-router-dom';
 import { PopularCars } from '../components/Carbox'
 import Navbar from '../components/Navbar/index';
 import Carousel from "react-elastic-carousel";
-
-
-import Bmw from "../images/partners/BMW.png"
-import Toyota from "../images/partners/toyota.png"
-import Ferrari from "../images/partners/ferrari.png"
-import Suzuki from "../images/partners/suzuki.png"
-import Honda from "../images/partners/honda.png"
-import Audi from "../images/partners/audi.png"
-import Hyundai from "../images/partners/hyundai.png"
-import Jaguar from "../images/partners/jaguar.png"
-import LandRover from "../images/partners/landrover.png"
-import Nissan from "../images/partners/nissan.png"
-import { message } from "antd";
-import banner1 from "../banners/1.png"
-import banner2 from "../banners/2.png"
-import banner3 from "../banners/3.png"
-import banner4 from "../banners/4.png"
-import img from "../images/Logo1.png"
 
 
 
@@ -314,7 +294,7 @@ const Item = styled.div`
 
 
 
-const Carlist = styled.div`
+const Studentlist = styled.div`
 //  background: #000;
 width: 100%;
 height: auto;
@@ -335,7 +315,7 @@ justify-content: center;
 `;
 
 
-const Carchart = styled.div`
+const Studentchart = styled.div`
 box-shadow: 0px 0px 2px 5px;
 width: 500px;
 height: 220px;
@@ -356,7 +336,7 @@ border-radius: 10px;
 
 
 `;
-const Cardetails = styled.p`
+const Studentdetails = styled.p`
 
 // background: #000;
 width: 45%;
@@ -482,11 +462,6 @@ const Home = () => {
 
 
 
-
-
-
-
-
   const switchTopularCars = () => {
 
     setTimeout(() => {
@@ -513,7 +488,7 @@ const Home = () => {
         {/* <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'top', height: '100%' }}>Why US</h1> */}
 
 
-        <p>Add details of your child  <Link to="/addcar">click here</Link></p>
+        <p>Add details of your child  <Link to="/addstudent">click here</Link></p>
 
         <PopcarandlocContainer>
           <Popcarandlocheader>
@@ -523,9 +498,9 @@ const Home = () => {
           {active === "pularCars" && <PuplarCarContainer >
 
 
-            <Carlist>
+            <Studentlist>
               {student.map((student) => (<>
-                <Carchart><Cardetails>
+                <Studentchart><Studentdetails>
                   <div>
                     <h2>{student.studentname}</h2>
                     <h5>School Name : {student.schoolname}</h5>
@@ -541,14 +516,14 @@ const Home = () => {
                     </>
                     }
 
-                  </div> </Cardetails>
-                  <Image src={student.studentimage} alt="Hondacivic" width='50%' height='96%' />
+                  </div> </Studentdetails>
+                  <Image src={student.studentimage} alt="" width='50%' height='96%' />
 
 
-                </Carchart>
+                </Studentchart>
               </>))}
 
-            </Carlist>
+            </Studentlist>
 
 
 

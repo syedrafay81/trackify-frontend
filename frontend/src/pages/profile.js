@@ -73,7 +73,7 @@ const ProfileContainerright = styled.div`
 `;
 
 
-const Carchart = styled.div`
+const Studentchart = styled.div`
   
 box-shadow: 0px 0px 2px 5px;
     width: 98%;
@@ -109,7 +109,7 @@ box-shadow: 0px 0px 2px 5px;
  
 `;
 
-const Cardetails = styled.p`
+const Studentdetails = styled.p`
   
   // background: #000;
     width: 45%;
@@ -182,90 +182,6 @@ function Profile() {
 
 
 
-
-
-  useEffect(async () => {
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      "email": email
-    });
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/bookinggetrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setbookingg(result))
-      .catch(error => console.log('error', error))
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/bookinggetAcceptedrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setbookinggAccepted(result))
-      .catch(error => console.log('error', error))
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/bookinggetRejectedrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setbookinggRejected(result))
-      .catch(error => console.log('error', error))
-
-
-
-
-  }, 5000)
-
-
-  useEffect(async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      "Useremail": email
-    });
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/getrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setRequesttt(result))
-      .catch(error => console.log('error', error))
-
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/getAcceptedrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setRequestttAccepted(result))
-      .catch(error => console.log('error', error))
-
-
-    await fetch("https://rent-a-car-pakistan.herokuapp.com/getRejectedrequestdata", requestOptions)
-      .then(response => response.json())
-      .then(result => setRequestttRejected(result))
-      .catch(error => console.log('error', error))
-
-
-
-
-
-
-  }, 5000)
-
-
-
-
-
-
-  const Path = "Carimages/"
 
   console.log("today date is ", localStorage.getItem('today'))
 
@@ -520,7 +436,7 @@ function Profile() {
 
                   {student.map((student) => (<>
 
-                    <Carchart> <Cardetails>
+                    <Studentchart> <Studentdetails>
                    <div>
                     <Form.Item  >
 
@@ -547,10 +463,10 @@ function Profile() {
            
              </div> 
 
-                      </Cardetails>
+                      </Studentdetails>
                       <Image src={student.studentimage} alt="Hondacivic" width='30%' height='96%' />
 
-                    </Carchart>
+                    </Studentchart>
                     </>))}
            
                    

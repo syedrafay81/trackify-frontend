@@ -8,16 +8,14 @@ import { Link } from 'react-router-dom';
 
 const AppContainer = styled.div`
   
- //background-image: url(https://cdn.shopify.com/s/files/1/1999/7417/products/220431_800x.jpg?v=1583253325);
-   background-Size: 20%;
+ background-Size: 20%;
   width: 100%;
     height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-   //background: rgb(50,142,65);
-  // background: linear-gradient(90deg, rgba(50,142,65,1) 4%, rgba(70,106,166,0.938813025210084) 100%, rgba(0,212,255,1) 100%);
+   
 `;
 
 
@@ -39,7 +37,7 @@ width: 80%;
  
 `;
 
-const Carlist = styled.div`
+const Studentlist = styled.div`
 // background: #000;
 width: 80%;
 height: auto;
@@ -60,7 +58,7 @@ justify-content: center;
 `;
 
 
-const Carchart = styled.div`
+const Studentchart = styled.div`
 box-shadow: 0px 0px 2px 5px;
 width: 520px;
 height: 200px;
@@ -81,7 +79,7 @@ border-radius: 10px;
 
 
 `;
-const Cardetails = styled.p`
+const Studentdetails = styled.p`
 
 // background: #000;
 width: 45%;
@@ -182,9 +180,9 @@ export default function Fee() {
         </Search>
 
 
-        <Carlist>
+        <Studentlist>
         {student.map((student) => (<>
-            <Carchart><Cardetails>
+            <Studentchart><Studentdetails>
               <div>
               <h2>total Fees: Rs.5000/-</h2>
               <h5> {student.studentname}</h5>
@@ -200,16 +198,16 @@ export default function Fee() {
          >pay now</Btn> </Link>
 
 
-              </div> </Cardetails>
-              <Image src={student.studentimage} alt="Hondacivic" width='50%' height='96%' />
+              </div> </Studentdetails>
+              <Image src={student.studentimage} alt="student" width='50%' height='96%' />
 
 
-            </Carchart>
+            </Studentchart>
 
             </>))}
 
    
-        </Carlist>
+        </Studentlist>
     
     
     

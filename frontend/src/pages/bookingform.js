@@ -106,8 +106,6 @@ function Bookingform() {
 
 
 
-  console.log("Car id is ", Carid);
-  console.log("Car Onwer email is ", CarOnweremail);
 
   const onFinish = async () => {
 

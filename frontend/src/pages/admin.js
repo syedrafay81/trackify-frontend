@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import { Btn } from '../components/Button'
-import { Carbox } from '../components/Carbox'
 import { Select, Form, Input, Button, Image, message } from 'antd';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar/index';
@@ -22,25 +21,6 @@ justify-content: center;
 // background: linear-gradient(90deg, rgba(50,142,65,1) 4%, rgba(70,106,166,0.938813025210084) 100%, rgba(0,212,255,1) 100%);
 `;
 
-const CarrequestsContainer = styled.div`
-max-height: 500px;
-   // background: #000;
-   width: 80%;
-   height: auto;
-   overflow-y: scroll;
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-   align-items: center;
-   justify-content: center;
-   margin: 30px;
-   border-radius: 5px;
-   box-shadow: 0 5px 100px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
-   @media screen and (max-width: 768px) {
-     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-   align-items: center;
-   justify-content: center;
-      
-`;
 
 const MessagesContainer = styled.div`
   
@@ -149,7 +129,7 @@ justify-content: center;
 
 
 
-const Carchart = styled.div`
+const Studentchart = styled.div`
   
 box-shadow: 0px 0px 2px 5px;
     width: 520px;
@@ -172,33 +152,10 @@ box-shadow: 0px 0px 2px 5px;
   
  
 `;
-const Cardetails = styled.p`
-  
-  // background: #000;
-    width: 45%;
-    height: 180px;
-    //display: grid;
-   // grid-template-columns: auto;
-  //  grid-gap: 10px;
-    flex-direction: row;
-     align-items: center;
-    // justify-content: center;
-   
-    @media screen and (max-width: 768px) {
-      width: 80%;
-      font-size: 7px;
-      height: 100px;
-      margin-top: 2px;
-      margin-left: 10px;
-    
-    }
-  
- 
-`;
 
 
 
-const Cardetails1 = styled.p`
+const Studentdetails = styled.p`
   
   // background: #000;
     width: 45%;
@@ -231,13 +188,11 @@ function Admin() {
 
   const emaillll = localStorage.getItem('email')
   if (emaillll === null) { localStorage.setItem('email', 'null') }
-  const [Totalcars, setTotalcars] = useState([])
+  
   const [Totaluser, setTotaluser] = useState([])
   const [Totaluserdriver, setTotaluserdriver] = useState([])
   const [Totaluserstudent, setTotaluserstudent] = useState([])
-  const [Messegee, setMessegee] = useState([])
-  const history = useHistory();
-  const [Car, setCar] = useState([])
+  
 
 
   const [drivername, setdrivername] = useState("");
@@ -286,13 +241,8 @@ function Admin() {
 
 
 
-  console.log("Car data ", Car);
-  console.log("Messege", Messegee);
-  console.log("Messege", Totaluser);
-
   const [email, setemail] = useState(localStorage.getItem('email'));
 
-  const Path = "Carimages/"
   const [Btnactive, setBtnactive] = useState("true");
 
 
@@ -450,7 +400,7 @@ function Admin() {
 
           {Totaluser.map((Userr) => (<>
 
-            <Carchart><Cardetails1>
+            <Studentchart><Studentdetails>
               <div>
                 <h1> {Userr.name}</h1>
                 <h2> {Userr.email}</h2>
@@ -471,15 +421,6 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  await fetch("https://rent-a-car-pakistan.herokuapp.com/deleteUserrdattaaa", requestOptions1)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-
-
-
-
-
 
                   message.info("User removed");
                   console.log("User removed");
@@ -490,22 +431,12 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  fetch("https://rent-a-car-pakistan.herokuapp.com/getalluserdata", Options)
-                    .then(response => response.json())
-                    .then(result => setTotaluser(result))
-                    .catch(error => console.log('error', error));
-
-
-
-
-
-
 
 
 
                 }}> Remove user</Btn>
               </div>
-            </Cardetails1>   </Carchart> </>))}
+            </Studentdetails>   </Studentchart> </>))}
 
         </UserinfoContainer>
 
@@ -513,7 +444,7 @@ function Admin() {
 
           {Totaluserdriver.map((Userr) => (<>
 
-            <Carchart><Cardetails1>
+            <Studentchart><Studentdetails>
               <div>
                 <h1> {Userr.drivername}</h1>
                 <h2> {Userr.driverbus}</h2>
@@ -537,11 +468,6 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  await fetch("https://rent-a-car-pakistan.herokuapp.com/deleteUserrdattaaa", requestOptions1)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-
 
 
 
@@ -556,11 +482,6 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  fetch("https://rent-a-car-pakistan.herokuapp.com/getalluserdata", Options)
-                    .then(response => response.json())
-                    .then(result => setTotaluser(result))
-                    .catch(error => console.log('error', error));
-
 
 
 
@@ -571,7 +492,7 @@ function Admin() {
 
                 }}> Remove user</Btn>
               </div>
-            </Cardetails1>   </Carchart> </>))}
+            </Studentdetails>   </Studentchart> </>))}
 
         </UserinfoContainer>
 
@@ -579,7 +500,7 @@ function Admin() {
 
           {Totaluserstudent.map((student) => (<>
 
-            <Carchart><Cardetails1>
+            <Studentchart><Studentdetails>
               <div>
               <h2>{student.studentname}</h2>
                   <h5>School Name : {student.schoolname}</h5>
@@ -605,12 +526,6 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  await fetch("https://rent-a-car-pakistan.herokuapp.com/deleteUserrdattaaa", requestOptions1)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-
-
 
 
 
@@ -624,26 +539,15 @@ function Admin() {
                     redirect: 'follow'
                   };
 
-                  fetch("https://rent-a-car-pakistan.herokuapp.com/getalluserdata", Options)
-                    .then(response => response.json())
-                    .then(result => setTotaluser(result))
-                    .catch(error => console.log('error', error));
-
-
-
-
-
-
-
 
 
                 }}> Remove user</Btn>
               </div>
-            </Cardetails1>  
+            </Studentdetails>  
             <Image src={student.studentimage} alt="Hondacivic" width='50%' height='200px' />
 
 
-             </Carchart> </>))}
+             </Studentchart> </>))}
 
         </UserinfoContainer>
 

@@ -6,14 +6,6 @@ import { Btn } from '../components/Button'
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar/index';
 
-import banner1 from "../banners/forcarlistpage/1.png"
-import banner2 from "../banners/forcarlistpage/2.png"
-import banner3 from "../banners/forcarlistpage/3.png"
-import banner4 from "../banners/forcarlistpage/4.png"
-import banner5 from "../banners/forcarlistpage/5.png"
-import banner6 from "../banners/forcarlistpage/6.png"
-
-
 
 
 const AppContainer = styled.div`
@@ -68,7 +60,7 @@ width: 80%;
  
 `;
 
-const Carlist = styled.div`
+const Studentlist = styled.div`
 // background: #000;
 width: 80%;
 height: auto;
@@ -89,7 +81,7 @@ justify-content: center;
 `;
 
 
-const Carchart = styled.div`
+const Studentchart = styled.div`
 box-shadow: 0px 0px 2px 5px;
 width: 520px;
 height: 200px;
@@ -110,7 +102,7 @@ border-radius: 10px;
 
 
 `;
-const Cardetails = styled.p`
+const Studentdetails = styled.p`
 
 // background: #000;
 width: 45%;
@@ -153,23 +145,6 @@ const Searchbarandbtn = styled.p`
 `;
 
 
-const Itemcar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  width: 100%;
-  background-color: #00008B;
-  //color: #fff;
-  margin: 1px;
-  @media screen and (max-width: 768px) {
-    width: 80%;
-    
-    height: 100px;
-   
-  
-  }
-`;
 
 
 const Services = () => {
@@ -199,12 +174,6 @@ const Services = () => {
     };
 
 
-    // var requestOptions = {
-    //   method: 'POST',
-    //   headers: myHeaders,
-    //   body: raw,
-    //   redirect: 'follow'
-    // };
 
     const res = await fetch("http://localhost:5000/getstudentfordriver", requestOptions)
 
@@ -215,134 +184,6 @@ const Services = () => {
 
   }, [])
 
-
-
-  // const handleInputs = 
-  // }
-
-
-
-  // const onFinish = async() => {
-  //   // console.log("Search  ", Searchvalue);
-  //   var myHeaders = new Headers();
-  //   myHeaders.append("Content-Type", "application/json");
-
-  //   var raw1 = JSON.stringify({
-  //     "Carname": Searchvalue
-  //   });
-
-  //   var requestOptions = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw1,
-  //     redirect: 'follow'
-  //   };
-
-  //  const res1 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions)
-
-  //  if(res1.status === 200 ){ 
-
-  //   res1.json().then(result => setCar(result))   
-  //   setSearchvalue()
-  // }
-  //  else{   
-
-  //   var raw2 = JSON.stringify({
-  //     "email": Searchvalue
-  //   });
-
-  //   var requestOptions2 = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw2,
-  //     redirect: 'follow'
-  //   };
-
-  //  const res2 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions2)
-  //  if(res2.status === 200 ){ 
-
-  //   res2.json().then(result => setCar(result)) 
-  //   setSearchvalue()
-  // }
-  // else{   
-
-  //   var raw3 = JSON.stringify({
-  //     "Model": Searchvalue
-  //   });
-
-  //   var requestOptions3 = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw3,
-  //     redirect: 'follow'
-  //   };
-
-  //  const res3 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions3)
-  //  if(res3.status === 200 ){ 
-
-  //   res3.json().then(result => setCar(result))
-  //   setSearchvalue()
-  // }
-  // else{   
-
-  //   var raw4 = JSON.stringify({
-  //     "username": Searchvalue
-  //   });
-
-  //   var requestOptions4 = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw4,
-  //     redirect: 'follow'
-  //   };
-
-  //  const res4 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions4)
-  //  if(res4.status === 200 ){ 
-  //   setSearchvalue()
-  //   res4.json().then(result => setCar(result))
-
-  // }
-
-  // else{   
-  //    var xx = (Searchvalue[2]+ Searchvalue[3]+ Searchvalue[4] + Searchvalue[5] + Searchvalue[6] + Searchvalue[7] + Searchvalue[8]  + Searchvalue[9] + Searchvalue[10])
-  //   //  var i= 2;
-  //   //  for ( i  ; i == 0; i=i+1) {
-  //   //   var xx;
-  //   //   var xx =xx + (Searchvalue[i]
-
-
-  //   //  }
-
-
-
-  //    console.log(xx)
-  //   var raw5 = JSON.stringify({
-  //     "number": xx
-  //   });
-
-  //   var requestOptions5 = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw5,
-  //     redirect: 'follow'
-  //   };
-
-  //  const res5 = await fetch("https://rent-a-car-pakistan.herokuapp.com/searchardataaa", requestOptions5)
-  //  if(res5.status === 200 ){ 
-  //   setSearchvalue()
-  //   res5.json().then(result => setCar(result))
-
-  // }else { message.info("Car not fund please enter valid Car model or Car company name or owner name or owners number")  }
-
-
-
-  // }}}}}
-
-
-  // const myImg = '../Carimages/logo512.png'
-
-  // const Path = "Carimages/"
-  // const email = localStorage.getItem('email')
 
   return (
     <> <Navbar /><div style={({ height: `80px` })}> </div>
@@ -371,9 +212,9 @@ const Services = () => {
         </Search>
 
 
-        <Carlist>
+        <Studentlist>
           {student.map((student) => (<>
-            <Carchart><Cardetails>
+            <Studentchart><Studentdetails>
               <div>
                 <h2>{student.studentname}</h2>
                 <h5>School Name : {student.schoolname}</h5>
@@ -446,17 +287,17 @@ const Services = () => {
                 >Reached</Btn>
 
 
-              </div> </Cardetails>
-              <Image src={student.studentimage} alt="Hondacivic" width='50%' height='96%' />
+              </div> </Studentdetails>
+              <Image src={student.studentimage} alt="student" width='50%' height='96%' />
 
 
-            </Carchart>
+            </Studentchart>
           </>))}
 
 
 
 
-        </Carlist>
+        </Studentlist>
 
       </AppContainer>
 

@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-
+import { Form, Input, Button, Image, message } from 'antd';
 
 
 const AppContainer = styled.div`
   
-  // background-image: url(https://i.pinimg.com/originals/cb/ac/d9/cbacd9b2f590524a563c66fd77cf54c7.jpg);
-   background-Size: 100%;
+  background-Size: 100%;
    width: 100%;
    height: 100vh;
   display: flex;
@@ -68,7 +67,7 @@ export default function Mainpage() {
           
         <div style={({ width: `100%`, height: `100%`, justifyContent:`center`, alignItems:`center`, display:`flex` })}>
           
-         <div>   <LLink to="/login"> <img src="getstared.png" alt="getstarted" width="100%" height="40px" /> </LLink> </div>
+         <div><LLink to="/login"> <img src="getstared.png" alt="getstarted" width="100%" height="40px" /> </LLink> </div>
       
             </div>
        
@@ -77,9 +76,6 @@ export default function Mainpage() {
    
         </Content>
 
-
-       
-   
     </AppContainer>)
 }
 

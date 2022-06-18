@@ -5,6 +5,7 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const cors = require("cors");
+const Tracker = require("./model/tracker");
 
 dotenv.config({ path: './config.env'});
 require("./db/connection");
@@ -16,6 +17,32 @@ app.use(cors())
 app.post('/locationdata',(req,res)=> {
     console.log(req.body)
     let x= req.body;
+
+    const {
+        deviceID, lat, long
+    } = req.body
+
+    try {
+
+     
+      
+
+            const tracker = new Tracker({
+                deviceID, lat, long
+            });
+            await tracker.save()
+            res.status(200).json("done");
+            console.log("done")
+
+        
+    } catch (err) {
+        console.log(err);
+    }
+
+
+
+
+
     res.send(x)
 })
 

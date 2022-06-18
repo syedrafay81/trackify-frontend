@@ -54,7 +54,7 @@ const Navbar = () => {
     <div >
 
 
-      <Nav>
+      <Nav style={{backgroundColor: "lightblue"}}>
         <Link to='/home'>
           {/* <div>logo</div> */}
           <h1>Trackify</h1>

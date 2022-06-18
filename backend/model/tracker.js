@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 
 const trackify = new mongoose.Schema({
   
-      id:{
+    deviceID:{
         type : String,
         required:true,        
     },
@@ -18,7 +18,7 @@ const trackify = new mongoose.Schema({
         required:true,        
     },
 
-    lati:{
+    lat:{
         type : String,
         required:true,        
     },

@@ -12,7 +12,7 @@ import Services from './pages/services';
 import Profile from './pages/profile';
 import Bookingform from './pages/bookingform';
 import Admin from './pages/admin';
-import Addcarform from './pages/addcarform';
+import Addstudentform from './pages/addstudentform';
 import SignIn from './pages/signin';
 import Fee from './pages/fee';
 
@@ -63,10 +63,11 @@ function App() {
             <Route path='/bookingform' component={Bookingform} />
 
             <Route path='/admin' component={Admin} />
-            <Route path='/addcar' component={Addcarform} />
+            <Route path='/addstudent' component={Addstudentform} />
             
             <Route path='/login' component={SignIn} />
             <Route path='/fee' component={Fee} />
+            
           </Switch>
 
           <BackTop>
