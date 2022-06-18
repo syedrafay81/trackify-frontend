@@ -125,7 +125,7 @@ const Searchbarandbtn = styled.p`
 export default function Fee() {
   const emaillll = localStorage.getItem('email')
   const [student, setstudent] = useState([""])
-  useEffect(async() => {
+  useEffect(async () => {
 
 
     var myHeaders = new Headers();
@@ -143,7 +143,7 @@ export default function Fee() {
       redirect: 'follow'
     };
 
-  
+
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -163,115 +163,115 @@ export default function Fee() {
 
 
   return (
-  <> <Navbar /><div style={({  height: `80px` })}> </div>< AppContainer> 
-
-    
-    
-<Search>
-          <Form >
-
-            <Searchbarandbtn>  <Input type="text" name="search" required="true" placeholder="Search Student by name" />
+    <> <Navbar /><div style={({ height: `80px` })}> </div>< AppContainer>
 
 
-              <Btn type="primary" htmlType="submit">Search</Btn></Searchbarandbtn>
+
+      <Search>
+        <Form >
+
+          <Searchbarandbtn>  <Input type="text" name="search" required="true" placeholder="Search Student by name" />
 
 
-          </Form>
-        </Search>
+            <Btn type="primary" htmlType="submit">Search</Btn></Searchbarandbtn>
 
 
-        <Studentlist>
+        </Form>
+      </Search>
+
+
+      <Studentlist>
         {student.map((student) => (<>
-            <Studentchart><Studentdetails>
-              <div>
+          <Studentchart><Studentdetails>
+            <div>
               <h2>total Fees: Rs.5000/-</h2>
               <h5> {student.studentname}</h5>
               <h5>School Name : {student.schoolname}</h5>
               <h5>School Location : {student.drop}</h5>
               <h5>Bus Driver : {student.drivername}</h5>
-             
-
-              <Link to="/bookingform"> <Btn 
 
 
-
-         >pay now</Btn> </Link>
-
-
-              </div> </Studentdetails>
-              <Image src={student.studentimage} alt="student" width='50%' height='96%' />
+              <Link to="/bookingform"> <Btn
 
 
-            </Studentchart>
 
-            </>))}
+              >pay now</Btn> </Link>
 
-   
-        </Studentlist>
-    
-    
-    
-    
-    
-    
+
+            </div> </Studentdetails>
+            <Image src={student.studentimage} alt="student" width='50%' height='96%' />
+
+
+          </Studentchart>
+
+        </>))}
+
+
+      </Studentlist>
+
+
+
+
+
+
     </AppContainer>
-    <h1>Trackify Fee Schedule</h1>
-    <table>
-  <tr>
-    <th>Areas</th>
-    <th>Fee</th>
-    <th>City</th>
-    <th> </th>
-  </tr>
-  <tr>
-    <td>DHA</td>
-    <td>5000</td>
-    <td>Karachi</td>
-    <td> </td>
-  </tr>
+      <h1>Trackify Fee Schedule</h1>
+      <table>
+        <tr>
+          <th>Areas</th>
+          <th>Fee</th>
+          <th>City</th>
+          <th> </th>
+        </tr>
+        <tr>
+          <td>DHA</td>
+          <td>5000</td>
+          <td>Karachi</td>
+          <td> </td>
+        </tr>
 
-  <tr>
-    <td>P.E.C.H.S</td>
-    <td>5500</td>
-    <td>Karachi</td>
-    <td> </td>
-  </tr>
+        <tr>
+          <td>P.E.C.H.S</td>
+          <td>5500</td>
+          <td>Karachi</td>
+          <td> </td>
+        </tr>
 
-  <tr>
-    <td>Gulshan-E-Iqbal</td>
-    <td>6000</td>
-    <td>Karachi</td>
-    <td> </td>
-  </tr>
+        <tr>
+          <td>Gulshan-E-Iqbal</td>
+          <td>6000</td>
+          <td>Karachi</td>
+          <td> </td>
+        </tr>
 
-  <tr>
-    <td>Malir Cantt</td>
-    <td>6500</td>
-    <td>Karachi</td>
-    <td> </td>
-  </tr>
+        <tr>
+          <td>Malir Cantt</td>
+          <td>6500</td>
+          <td>Karachi</td>
+          <td> </td>
+        </tr>
 
-  <tr>
-    <td>Gulshan-E-Memaar</td>
-    <td>8000</td>
-    <td>Karachi</td>
-    <td>  </td>
-  </tr>
+        <tr>
+          <td>Gulshan-E-Memaar</td>
+          <td>8000</td>
+          <td>Karachi</td>
+          <td>  </td>
+        </tr>
 
-  <tr>
-    <td>Gulistan-e-Jauhar</td>
-    <td>7000</td>
-    <td>Karachi</td>
-    <td>  </td>
-  </tr>
+        <tr>
+          <td>Gulistan-e-Jauhar</td>
+          <td>7000</td>
+          <td>Karachi</td>
+          <td>  </td>
+        </tr>
 
-  <tr>
-    <td>Korongi</td>
-    <td>6500</td>
-    <td>Karachi</td>
-    <td> </td>
-  </tr>
-          
-</table>
-  </>)
+        <tr>
+          <td>Korongi</td>
+          <td>6500</td>
+          <td>Karachi</td>
+          <td> </td>
+        </tr>
+
+      </table>
+    </>)
 }

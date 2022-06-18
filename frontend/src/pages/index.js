@@ -392,20 +392,20 @@ const Home = () => {
   const [Totaloffices, seTotaloffices] = useState(1);
   const email = localStorage.getItem('email')
 
-  const [longitude, setlongitude] = useState(24.867343);
-  const [latitude, setlatitude] = useState(67.0847641);
+  const [longitude, setlongitude] = useState();
+  const [latitude, setlatitude] = useState();
 
   function Map() {
 
 
     return (<>
-      <GoogleMap defaultZoom={15} defaultCenter={{ lat: 24.8673535, lng: 67.0849856 }} >
-  
+      <GoogleMap defaultZoom={18} defaultCenter={{ lat: latitude, lng: longitude }} >
+
         <Marker
           key='student'
           position={{
-            lat: longitude,
-            lng: latitude
+            lat: latitude,
+            lng: longitude
           }} />
       </GoogleMap></>
     );
@@ -508,10 +508,52 @@ const Home = () => {
                     <h5>Bus Driver : {student.drivername}</h5>
                     <h5>Bus Driver ID : {student.busnumberplate}</h5>
                     {student.studentstatus === "onboard" && <>
-                      <Btn onClick={() => {
+                      <Btn onClick={async () => {
 
 
-                        setActive("location");
+                        setInterval(async () => {
+
+
+
+                          var myHeaders = new Headers();
+                          myHeaders.append("Content-Type", "application/json");
+
+                          var raw = JSON.stringify({
+
+                            "Trackerid": student.Trackerid
+                          });
+
+                          var requestOptions = {
+                            method: 'POST',
+                            headers: myHeaders,
+                            body: raw,
+                            redirect: 'follow'
+                          };
+
+
+
+                          const res = await fetch("http://localhost:5000/getstudentocation", requestOptions)
+
+                          // if (res.status === 200) {
+
+                          await res.json().then(result => {
+                            setlatitude(parseFloat(result.lat))
+                            setlongitude(parseFloat(result.long))
+
+                            // setlatitude(lattt)
+                            // setlongitude(longg)
+                          })
+                          // }
+
+
+
+
+
+
+
+
+                        }, 1000);
+                        await setActive("location");
                       }}>Track Bus</Btn>
                     </>
                     }

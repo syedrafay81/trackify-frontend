@@ -80,7 +80,7 @@ function Bookingform() {
   const CarOnweremail = localStorage.getItem('Car Onwer email');
 
   const [Bookinginfo, setBookinginfo] = useState({
-    Name: "", Phone: "", CNIC: "", Address: "", SelectedCity: "null", Date: "null",
+    Name: "", Phone: "", CNIC: "", Address: "", SelectedCity: "null", message: "null",
   })
 
   const [Requeststatus, setRequeststatus] = useState("notSubmitted")
@@ -119,138 +119,127 @@ function Bookingform() {
 
 
 
-      if (Bookinginfo.Date != "null") {
 
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({
-          "Name": Bookinginfo.Name,
-          "Phone": Bookinginfo.Phone,
-          "CNIC": Bookinginfo.CNIC,
-          "Address": Bookinginfo.Address,
-          "SelectedCity": Bookinginfo.SelectedCity,
-          "Date": Bookinginfo.Date,
-          "Carid": Carid,
-          "CarOnweremail": CarOnweremail,
-          "Carname": Carname,
-          "CarModel": CarModel,
-          "Carusername": Carusername,
-          "Carnumber": Carnumber,
-          "Carimage": Carimage,
-          "Carprice": Carpricee,
-          "email": localStorage.getItem('email')
-        });
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
+      var raw = JSON.stringify({
+        "Name": Bookinginfo.Name,
+        "Phone": Bookinginfo.Phone,
+        "CNIC": Bookinginfo.CNIC,
+        "Address": Bookinginfo.Address,
+        "SelectedCity": Bookinginfo.SelectedCity,
+        "message": Bookinginfo.message,
 
-        await fetch("https://rent-a-car-pakistan.herokuapp.com/getbookingformdata", requestOptions)
-          .then(response => response.text(), setRequeststatus("submitted"))
-          .then(result => console.log(result))
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      await fetch("https://rent-a-car-pakistan.herokuapp.com/getbookingformdata", requestOptions)
+        .then(response => response.text(), setRequeststatus("submitted"))
+        .then(result => console.log(result))
 
 
-        localStorage.removeItem('Carr.price');
-        localStorage.removeItem('Carr._id');
-        localStorage.removeItem('Carr.Carname');
-        localStorage.removeItem('Carr.Model');
-        localStorage.removeItem('Carr.username');
-        localStorage.removeItem(' Carr.number');
-        localStorage.removeItem('Carr.image');
-        localStorage.removeItem('Car Onwer email');
-        localStorage.removeItem('Carrpricee');
-        await setActivebtn("true")
-      } else {
-        await setActivebtn("true")
-        message.error("Please select Date")
-      }
+      localStorage.removeItem('Carr.price');
+      localStorage.removeItem('Carr._id');
+      localStorage.removeItem('Carr.Carname');
+      localStorage.removeItem('Carr.Model');
+      localStorage.removeItem('Carr.username');
+      localStorage.removeItem(' Carr.number');
+      localStorage.removeItem('Carr.image');
+      localStorage.removeItem('Car Onwer email');
+      localStorage.removeItem('Carrpricee');
+      await setActivebtn("true")
+
     }
   };
 
 
   return (
-  
-
-      <>   <Navbar /><div style={({ height: `80px` })}> </div>
-
-        <AppContainer>
-          {Requeststatus === "notSubmitted" &&
-            <div>
-              <div style={{ display: `flex` }}>
 
 
+    <>   <Navbar /><div style={({ height: `80px` })}> </div>
 
-                <Tag>
+      <AppContainer>
+        {Requeststatus === "notSubmitted" &&
+          <div>
+            <div style={{ display: `flex` }}>
 
 
 
-                  <h2>Contact Form</h2>
-
-                  <Form onFinish={onFinish}>
+              <Tag>
 
 
 
-                    <Form.Item >
-                      <Input type='text' required='true' name='Name' onChange={handleInputs} placeholder="Name" />
-                    </Form.Item>
-                    <Form.Item >
-                      <Input prefix="03" name="Phone" required="true" type='text' pattern="(\d).{8,8}" title="should be 11 numbers, should be like 03xxxxxxxxx" onChange={handleInputs} placeholder="Phone" />
-                    </Form.Item>
-                    <Form.Item >
-                      <Input required="true" name="CNIC" type='text' pattern="(\d).{12,12}" title="should be 13 numbers, should be like 4250112345678" onChange={handleInputs} placeholder="CNIC" />
-                    </Form.Item>
-                    <Form.Item >
-                      <Input type='text' required='true' name='Address' onChange={handleInputs} placeholder="Address" />
-                    </Form.Item>
-                    <Form.Item >
-                      <Select type='text' required='true' name='SelectedCity' onChange={handleChange} placeholder="Select City">
-                        <Select.Option value="Karachi">Karachi</Select.Option>
-                        <Select.Option value="Lahore">Lahore</Select.Option>
-                        <Select.Option value="Islamabad">Islamabad</Select.Option>
-                      </Select>
-                    </Form.Item>
+                <h2>Contact Form</h2>
 
-                    <Form.Item >
+                <Form onFinish={onFinish}>
 
-                      <br />
-                      <TextArea rows={4} placeholder="your messege" />
 
-                    </Form.Item>
-                    {/* </Form.Item>
+
+                  <Form.Item >
+                    <Input type='text' required='true' name='Name' onChange={handleInputs} placeholder="Name" />
+                  </Form.Item>
+                  <Form.Item >
+                    <Input prefix="03" name="Phone" required="true" type='text' pattern="(\d).{8,8}" title="should be 11 numbers, should be like 03xxxxxxxxx" onChange={handleInputs} placeholder="Phone" />
+                  </Form.Item>
+                  <Form.Item >
+                    <Input required="true" name="CNIC" type='text' pattern="(\d).{12,12}" title="should be 13 numbers, should be like 4250112345678" onChange={handleInputs} placeholder="CNIC" />
+                  </Form.Item>
+                  <Form.Item >
+                    <Input type='text' required='true' name='Address' onChange={handleInputs} placeholder="Address" />
+                  </Form.Item>
+                  <Form.Item >
+                    <Select type='text' required='true' name='SelectedCity' onChange={handleChange} placeholder="Select City">
+                      <Select.Option value="Karachi">Karachi</Select.Option>
+                      <Select.Option value="Lahore">Lahore</Select.Option>
+                      <Select.Option value="Islamabad">Islamabad</Select.Option>
+                    </Select>
+                  </Form.Item>
+
+                  <Form.Item >
+
+                    <br />
+                    <TextArea rows={4} onChange={handleInputs} placeholder="your messege" />
+
+                  </Form.Item>
+                  {/* </Form.Item>
         <Form.Item label="Car Tag">
           <InputNumber />
         </Form.Item> */}
-                    <Form.Item>
-                      <Checkbox required='true' >I agree to all the terms & conditions</Checkbox>
+                  <Form.Item>
+                    <Checkbox required='true' >I agree to all the terms & conditions</Checkbox>
 
-                    </Form.Item>
-                    <Form.Item >
-                      {Activebtn === "true" && <>            <Button htmlType="submit" >Submit</Button></>}
-                      {Activebtn === "false" && <>           <Button htmlType="button" onClick={() => { message.info("please wait") }} >Confirm Booking</Button></>}
-                    </Form.Item>
-                  </Form>
-                </Tag>
-
-              </div>
+                  </Form.Item>
+                  <Form.Item >
+                    {Activebtn === "true" && <>            <Button htmlType="submit" >Submit</Button></>}
+                    {Activebtn === "false" && <>           <Button htmlType="button" onClick={() => { message.info("please wait") }} >Confirm Booking</Button></>}
+                  </Form.Item>
+                </Form>
+              </Tag>
 
             </div>
-          }
 
-          {Requeststatus === "submitted" &&
-            <Tag> <div><h1>your booking Request has been send to the Owner of Car,  the Owner of Car will contact you as he/she accept your request. </h1></div></Tag>
-          }
-        </AppContainer>
+          </div>
+        }
+
+        {Requeststatus === "submitted" &&
+          <Tag> <div><h1>ThankYou for contacting us. We will get back to you as soon as possible. </h1></div></Tag>
+        }
+      </AppContainer>
 
 
-      </>
+    </>
 
-    
-   
+
+
   )
 
 }

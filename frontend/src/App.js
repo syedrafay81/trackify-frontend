@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BackTop } from 'antd';
 
@@ -45,36 +45,36 @@ function App() {
 
 
   return (
-    
+
     <Router><ScrollToTop />
-     <div className='Background'>
+      <div className='Background'>
 
-    
-     
 
-          <Switch>
-         
-          <Route path='/' exact component={ Mainpage} />
-            <Route path='/home' exact component={Home} />
-            <Route path='/about' exact component={About} />
-            <Route path='/services' component={Services} />     
-            <Route path='/profile' component={Profile} />
 
-            <Route path='/bookingform' component={Bookingform} />
 
-            <Route path='/admin' component={Admin} />
-            <Route path='/addstudent' component={Addstudentform} />
-            
-            <Route path='/login' component={SignIn} />
-            <Route path='/fee' component={Fee} />
-            
-          </Switch>
+        <Switch>
 
-          <BackTop>
-      <div style={style}><PublishOutlinedIcon fontSize='large'/></div>
-    </BackTop>
-      <FooterContainer />
-     
+          <Route path='/' exact component={Mainpage} />
+          <Route path='/home' exact component={Home} />
+          <Route path='/about' exact component={About} />
+          <Route path='/services' component={Services} />
+          <Route path='/profile' component={Profile} />
+
+          <Route path='/bookingform' component={Bookingform} />
+
+          <Route path='/admin' component={Admin} />
+          <Route path='/addstudent' component={Addstudentform} />
+
+          <Route path='/login' component={SignIn} />
+          <Route path='/fee' component={Fee} />
+
+        </Switch>
+
+        <BackTop>
+          <div style={style}><PublishOutlinedIcon fontSize='large' /></div>
+        </BackTop>
+        <FooterContainer />
+
       </div>
     </Router>
   );

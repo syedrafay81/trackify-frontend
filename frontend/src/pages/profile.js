@@ -226,9 +226,9 @@ function Profile() {
 
 
   const [student, setstudent] = useState([""])
- 
 
-  useEffect(async() => {
+
+  useEffect(async () => {
 
 
     var myHeaders = new Headers();
@@ -246,7 +246,7 @@ function Profile() {
       redirect: 'follow'
     };
 
-  
+
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -408,9 +408,9 @@ function Profile() {
 
 
 
-            <div style={{ display: `flex`, justifyContent: `center`, alignItems: `center` }} > 
-                {profileedit === "false" && <> <Link style={{ marginLeft: `25px` }} onClick={() => { setprofileedit("true") }}> 
-                 Edit profile</Link></>} 
+            <div style={{ display: `flex`, justifyContent: `center`, alignItems: `center` }} >
+              {profileedit === "false" && <> <Link style={{ marginLeft: `25px` }} onClick={() => { setprofileedit("true") }}>
+                Edit profile</Link></>}
               {profileedit === "true" && <>   <Link style={{ marginLeft: `25px` }} onClick={Cancel}> Cancel </Link> </>} </div>
 
           </ProfileContainerleft>
@@ -418,7 +418,6 @@ function Profile() {
 
             </div>
 
-          
 
 
 
@@ -426,54 +425,75 @@ function Profile() {
 
 
 
-              <ProfileContainerright>
-                <div>  
+
+            <ProfileContainerright>
+              <div>
 
 
 
 
-                  <>
+                <>
 
                   {student.map((student) => (<>
 
                     <Studentchart> <Studentdetails>
-                   <div>
-                    <Form.Item  >
+                      <div>
+                        <Form.Item  >
 
-                  
-                    <Input required="true" placeholder="New Name" type='text' value={student.studentname} onChange={(e) => {  }} />
-                   <Input required="true" placeholder="New Name" type='text' value={student.schoolname} onChange={(e) => { setNewname(e.target.value) }} />
-                   <Input required="true" placeholder="New Name" type='text' value="School Location" onChange={(e) => { setNewname(e.target.value) }} />
-                   <Input required="true" placeholder="New Name" type='text' value={student.drivername} onChange={(e) => { setNewname(e.target.value) }} />
-                   <Input required="true" placeholder="New Name" type='text' value={student.busnumberplate} onChange={(e) => { setNewname(e.target.value) }} />
-                   <Button type="primary" htmlType="submit" >
-                    Update
-                  </Button>
 
-                  <Button danger onClick={() => { setAccountdelet("true") }}> Delete Student </Button>
+                          <Input required="true" placeholder="New Name" type='text' value={student.studentname} onChange={(e) => { }} />
+                          <Input required="true" placeholder="New Name" type='text' value={student.schoolname} onChange={(e) => { setNewname(e.target.value) }} />
+                          <Input required="true" placeholder="New Name" type='text' value="School Location" onChange={(e) => { setNewname(e.target.value) }} />
+                          <Input required="true" placeholder="New Name" type='text' value={student.drivername} onChange={(e) => { setNewname(e.target.value) }} />
+                          <Input required="true" placeholder="New Name" type='text' value={student.busnumberplate} onChange={(e) => { setNewname(e.target.value) }} />
 
-                  
-                  </Form.Item>
-                 
-                      {/* <Input>Student Name</Input>
+
+                          <Button danger onClick={async () => {
+
+
+                            var myHeaders = new Headers();
+                            myHeaders.append("Content-Type", "application/json");
+
+                            var raw = JSON.stringify({
+                              "id": student._id,
+
+
+                            });
+
+                            var requestOptions = {
+                              method: 'POST',
+                              headers: myHeaders,
+                              body: raw,
+                              redirect: 'follow'
+                            };
+
+                            await fetch("http://localhost:5000/deleteUserrdattaaaaaaa", requestOptions)
+
+                            await window.location.reload(false);
+                          }}> Delete Student </Button>
+
+
+                        </Form.Item>
+
+                        {/* <Input>Student Name</Input>
              <Input>School Name</Input>
              <Input>School Location </Input>
              <Input>Bus Driver</Input>
              <Input>Bus Driver ID</Input>*/}
-           
-             </div> 
 
-                      </Studentdetails>
+                      </div>
+
+                    </Studentdetails>
                       <Image src={student.studentimage} alt="Hondacivic" width='30%' height='96%' />
 
                     </Studentchart>
-                    </>))}
-           
-                   
-                  </>
-           
+                  </>))}
 
-                </div>
+
+                </>
+
+
+              </div>
 
 
 
@@ -491,7 +511,7 @@ function Profile() {
 
 
 
-       
+
 
 
 
@@ -503,16 +523,16 @@ function Profile() {
 
           </ProfileContainer>
 
-      </AppContainer>
+        </AppContainer>
 
 
 
 
       </>
       }
-{
-  email === "null" && <AppContainer> <div width='100px' >  Page Not found Please Sign in to continue <Link to="/signin"> Sign in here</Link> </div>  </AppContainer>
-}
+      {
+        email === "null" && <AppContainer> <div width='100px' >  Page Not found Please Sign in to continue <Link to="/signin"> Sign in here</Link> </div>  </AppContainer>
+      }
     </>)
 }
 
