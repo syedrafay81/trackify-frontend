@@ -184,19 +184,18 @@ export default function Fee() {
         {student.map((student) => (<>
           <Studentchart><Studentdetails>
             <div>
-              <h2>total Fees: Rs.5000/-</h2>
+              <h2>Total Fees: Rs.5000/-</h2>
               <h5> {student.studentname}</h5>
               <h5>School Name : {student.schoolname}</h5>
               <h5>School Location : {student.drop}</h5>
               <h5>Bus Driver : {student.drivername}</h5>
 
 
-              <Link to="/bookingform"> <Btn
+              {/* <Link to="/bookingform"> <Btn */}
 
 
 
-              >pay now</Btn> </Link>
-
+              {/* >pay now</Btn> </Link> */}
 
             </div> </Studentdetails>
             <Image src={student.studentimage} alt="student" width='50%' height='96%' />
