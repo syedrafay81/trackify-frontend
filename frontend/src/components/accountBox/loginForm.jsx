@@ -74,7 +74,13 @@ export function LoginForm(props) {
       message.success("login Successfull");
 
       setTimeout(hide, 1);
-      await history.push("/home");
+      if(email == 'cs1812170@szabist.pk'){
+        await history.push("/admin");
+      }
+      else{
+        await history.push("/home");
+      }
+      
     }else if (res.status === 402) {
 
 
@@ -156,7 +162,7 @@ export function LoginForm(props) {
             placeholder="password"
           />
           <Marginer direction="vertical" margin={10} />
-          <MutedLink onClick={() => { setstatus("forgetpass") }}>Forgot your password?</MutedLink>
+          {/* <MutedLink onClick={() => { setstatus("forgetpass") }}>Forgot your password?</MutedLink> */}
           <Marginer direction="vertical" margin="1.6em" />
           <SubmitButton Type="submit"  > Sign in </SubmitButton>
 

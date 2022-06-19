@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../components/Navbar/index';
 import styled from "styled-components";
-import { Select, Form, Input, Button, Image, message } from 'antd';
+import { Select, Form, Input, Button, Image, message, Table } from 'antd';
 import { Btn } from '../components/Button'
 import { Link } from 'react-router-dom';
 
@@ -103,26 +103,104 @@ flex-direction: row;
 
 `;
 
-const Searchbarandbtn = styled.p`
-  
-  
-    width: 100%;
-    
-    display: flex;
-   
-    flex-direction: row;
-     
-   
-   
-    
-    
-  
-  
- 
-`;
+
+const dataSource = [
+  {
+    key: '1',
+    Area: 'DHA',
+    Fees: 5000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '2',
+    Area: 'PECHS',
+    Fees: 6000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '3',
+    Area: 'Gulshan-E-Iqbal',
+    Fees: 70000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '4',
+    Area: 'Malir Cantt',
+    Fees: 8000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '5',
+    Area: 'Gulshan-E-Memaar',
+    Fees: 9000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '6',
+    Area: 'Gulistan-e-Jauhar',
+    Fees: 8000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '7',
+    Area: 'Korongi',
+    Fees: 7000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '8',
+    Area: 'Malir',
+    Fees: 10000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '9',
+    Area: 'Tariq Road',
+    Fees: 5000,
+    City: 'Karachi',
+  },
+
+  {
+    key: '10',
+    Area: 'Saddar',
+    Fees: 4000,
+    City: 'Karachi',
+  },
+
+];
+
+const columns = [
+  {
+    title: 'Area',
+    dataIndex: 'Area',
+    key: 'Area',
+  },
+  {
+    title: 'Fees',
+    dataIndex: 'Fees',
+    key: 'Fees',
+  },
+  {
+    title: 'City',
+    dataIndex: 'City',
+    key: 'City',
+  },
+];
 
 
 export default function Fee() {
+
+
+
+
   const emaillll = localStorage.getItem('email')
   const [student, setstudent] = useState([""])
   useEffect(async () => {
@@ -162,32 +240,23 @@ export default function Fee() {
 
 
 
+
+
   return (
     <> <Navbar /><div style={({ height: `80px` })}> </div>< AppContainer>
 
 
 
-      <Search>
-        <Form >
-
-          <Searchbarandbtn>  <Input type="text" name="search" required="true" placeholder="Search Student by name" />
-
-
-            <Btn type="primary" htmlType="submit">Search</Btn></Searchbarandbtn>
-
-
-        </Form>
-      </Search>
 
 
       <Studentlist>
         {student.map((student) => (<>
           <Studentchart><Studentdetails>
             <div>
-              <h2>Total Fees: Rs.5000/-</h2>
-              <h5> {student.studentname}</h5>
+              <h3> {student.studentname}</h3>
               <h5>School Name : {student.schoolname}</h5>
-              <h5>School Location : {student.drop}</h5>
+              <h5>School Location : {student.pick}</h5>
+              <h5>Drop Location : {student.drop}</h5>
               <h5>Bus Driver : {student.drivername}</h5>
 
 
@@ -214,63 +283,11 @@ export default function Fee() {
 
 
     </AppContainer>
+
+
       <h1>Trackify Fee Schedule</h1>
-      <table>
-        <tr>
-          <th>Areas</th>
-          <th>Fee</th>
-          <th>City</th>
-          <th> </th>
-        </tr>
-        <tr>
-          <td>DHA</td>
-          <td>5000</td>
-          <td>Karachi</td>
-          <td> </td>
-        </tr>
+      <Table dataSource={dataSource} columns={columns} />;
 
-        <tr>
-          <td>P.E.C.H.S</td>
-          <td>5500</td>
-          <td>Karachi</td>
-          <td> </td>
-        </tr>
 
-        <tr>
-          <td>Gulshan-E-Iqbal</td>
-          <td>6000</td>
-          <td>Karachi</td>
-          <td> </td>
-        </tr>
-
-        <tr>
-          <td>Malir Cantt</td>
-          <td>6500</td>
-          <td>Karachi</td>
-          <td> </td>
-        </tr>
-
-        <tr>
-          <td>Gulshan-E-Memaar</td>
-          <td>8000</td>
-          <td>Karachi</td>
-          <td>  </td>
-        </tr>
-
-        <tr>
-          <td>Gulistan-e-Jauhar</td>
-          <td>7000</td>
-          <td>Karachi</td>
-          <td>  </td>
-        </tr>
-
-        <tr>
-          <td>Korongi</td>
-          <td>6500</td>
-          <td>Karachi</td>
-          <td> </td>
-        </tr>
-
-      </table>
     </>)
 }

@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useCallback, useState  } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { Form, Input, message } from 'antd';
 import { MdClose } from 'react-icons/md';
-import {Btn} from '../Button'
+import { Btn } from '../Button'
 
 
 
@@ -132,7 +132,7 @@ export const BoldLink = styled.a`
   margin: 0 4px;
 `;
 
- const FormContainer = styled.form`
+const FormContainer = styled.form`
   width: 90%;
   left: 0px;
   display: flex;
@@ -187,94 +187,94 @@ export const Modal = ({ showModal, setShowModal }) => {
   };
 
   const closeModall = () => {
-    
-      setShowModal(false);
-    
+
+    setShowModal(false);
+
   };
 
 
- 
-    
-    const [Messegee, setMessegee] = useState({
-        name: "", email: "", messege :"",
-      })
 
-      let name, value;
-      const handleInputs =(e)=>{
-          console.log(e);
-          name = e.target.name;
-          value = e.target.value;
-  
-          setMessegee({...Messegee , [name]:value});
+
+  const [Messegee, setMessegee] = useState({
+    name: "", email: "", messege: "",
+  })
+
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setMessegee({ ...Messegee, [name]: value });
+  }
+
+  const keyPress = useCallback(
+    e => {
+      if (e.key === 'Escape' && showModal) {
+        setShowModal(false);
+        console.log('I pressed');
       }
+    },
+    [setShowModal, showModal]
+  );
 
-      const keyPress = useCallback(
-        e => {
-          if (e.key === 'Escape' && showModal) {
-            setShowModal(false);
-            console.log('I pressed');
-          }
-        },
-        [setShowModal, showModal]
-      );
-    
-      useEffect(
-        () => {
-          document.addEventListener('keydown', keyPress);
-          return () => document.removeEventListener('keydown', keyPress);
-        },
-        [keyPress]
-      );
-    
+  useEffect(
+    () => {
+      document.addEventListener('keydown', keyPress);
+      return () => document.removeEventListener('keydown', keyPress);
+    },
+    [keyPress]
+  );
+
 
   const PostData = async (e) => {
-   
+
     e.preventDefault();
-   
-   const { name, email, messege } = Messegee;
-  
-  
-  
-  
-  
-  
-   const res =  await fetch("https://rent-a-car-pakistan.herokuapp.com/messeges", {
-   
-   
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json"
-     },
-     body: JSON.stringify({
+
+    const { name, email, messege } = Messegee;
+
+
+
+
+
+
+    const res = await fetch("https://rent-a-car-pakistan.herokuapp.com/messeges", {
+
+
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         name, email, messege
-     })
+      })
 
-   });
+    });
 
-  
-   
-  
-   if(res.status == 422){
-     
-       message.error("please fill all fields");
-       console.log("please fill all fields");
-       
-   }
-   
-   else{
-    
-    
-       message.success("Thank you for Contacting us");
-       console.log("Thank you for Contacting us");
-       closeModall()
-     
-   }
- 
+
+
+
+    if (res.status == 422) {
+
+      message.error("please fill all fields");
+      console.log("please fill all fields");
+
+    }
+
+    else {
+
+
+      message.success("Thank you for Contacting us");
+      console.log("Thank you for Contacting us");
+      closeModall()
+
+    }
+
 
   }
- 
 
-  
+
+
   return (
     <>
       {showModal ? (
@@ -283,15 +283,15 @@ export const Modal = ({ showModal, setShowModal }) => {
             <ModalWrapper showModal={showModal}>
               <ModalImg src='https://images.unsplash.com/photo-1603980928123-ee86cefbe233?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80' alt='camera' />
               <ModalContent>
-              
-              <h1>Send your message to admin</h1>
-              <FormContainer   onSubmit={PostData} > 
-              <Iinput placeholder="Your name" required="ture" name="name" onChange={handleInputs} />
-              <Iinput  placeholder="Your email" required="ture" type="email" name="email" onChange={handleInputs} />
-              <Iinput placeholder="Your Message for admin" required="ture" name="messege" onChange={handleInputs} />
-              <Btn type="primary" htmlType="submit" > Send message</Btn>
 
-                </FormContainer> 
+                <h1>Send your message to admin</h1>
+                <FormContainer onSubmit={PostData} >
+                  <Iinput placeholder="Your name" required="ture" name="name" onChange={handleInputs} />
+                  <Iinput placeholder="Your email" required="ture" type="email" name="email" onChange={handleInputs} />
+                  <Iinput placeholder="Your Message for admin" required="ture" name="messege" onChange={handleInputs} />
+                  <Btn type="primary" htmlType="submit" > Send message</Btn>
+
+                </FormContainer>
               </ModalContent>
               <CloseModalButton
                 aria-label='Close modal'

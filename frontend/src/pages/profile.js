@@ -340,10 +340,10 @@ function Profile() {
         <AppContainer>
           <ProfileContainer> <ProfileContainerleft>
             {profileedit === "false" && <>
-              {/* <h1>Profile:</h1> by haroon */}
+
               <h3>{username}</h3>
-              {/* changing by haroon by haroon */}
-              {/* <h1>Email:</h1> */}
+
+
               <h4>{email}</h4> </>}
 
 
@@ -484,7 +484,7 @@ function Profile() {
                       </div>
 
                     </Studentdetails>
-                      <Image src={student.studentimage} alt="Hondacivic" width='30%' height='96%' />
+                      <Image src={student.studentimage} alt="" width='30%' height='96%' />
 
                     </Studentchart>
                   </>))}

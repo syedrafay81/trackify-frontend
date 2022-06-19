@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar/index';
 import { storage } from "../firebase";
 import { useHistory } from 'react-router-dom'
+import { withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps";
 const { Option } = Select;
 const AppContainer = styled.div`
   
@@ -179,20 +180,128 @@ const Studentdetails = styled.p`
  
 `;
 
+const LoationContainer = styled.div`
+  
+box-shadow: 0px 0px 10px 5px;
+width: 100%;
+height: 400px;
+//background: #235;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: bottom;
+
+`;
+
+const PuplarCarContainer = styled.div`
+  
+ 
+width: 100%;
+height: 100%;
+//background: #999;
+box-shadow: 0px 0px 10px 5px;
+// display: grid;
+grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    align-items: center;
+    justify-content: center;
+   // box-shadow: 0 5px 100px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+
+ @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    align-items: top;
+    justify-content: center;
+      
+    
+    }
+
+    `;
+
+const Popcarandlocheaderbtn = styled.button`
+border-radius: 20px 20px 0px 00px;
+//background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTltOnWb8DwIGlyUE-k6WksPWBBWvcB0p-fNg&usqp=CAU);
+padding: 10px 22px;
+color: #fff;
+outline: none;
+border: none;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+text-decoration: none;
+border-color: #000;
+margin-left: 0px;
+background: #333;
+height: 20%
+width: 100%;
+
+&:active {
+  transition: all ;
+  background: #fff;
+  color: #010606;
+}
+`;
+
+const Popcarandlocheader = styled.div`
+  
+ 
+width: 100%;
+height: 40px;
+//background: #555;
+grid-template-columns: auto auto auto auto;
+flex-direction: column;
+align-items: left;
+justify-content: bottom;
+//margin-bottom: 5%;
+`;
 
 
+const PopcarandlocContainer = styled.div`
+  
+ 
+width: 95%;
+height: 100%;
+//background: #999;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: bottom;
+margin-bottom: 5%;
+border-radius: 15px 15px 15px 15px;
+`;
 
+const Studentlist = styled.div`
+//  background: #000;
+width: 100%;
+height: auto;
+max-height: 500px;
+overflow-y: scroll;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+align-items: center;
+justify-content: center;
+// margin: 30px;
+border-radius: 5px;
+// box-shadow: 0 5px 100px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+@media screen and (max-width: 768px) {
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+align-items: center;
+justify-content: center;
+   
+`;
 
 
 function Admin() {
 
+  const [longitude, setlongitude] = useState();
+  const [latitude, setlatitude] = useState();
+  const [active, setActive] = useState("location");
+
   const emaillll = localStorage.getItem('email')
   if (emaillll === null) { localStorage.setItem('email', 'null') }
-  
+
   const [Totaluser, setTotaluser] = useState([])
   const [Totaluserdriver, setTotaluserdriver] = useState([])
+  const [student, setstudent] = useState([""])
   const [Totaluserstudent, setTotaluserstudent] = useState([])
-  
+
 
 
   const [drivername, setdrivername] = useState("");
@@ -205,6 +314,40 @@ function Admin() {
   const [driverschool, setdriverschool] = useState("");
   const [driverpickup, setdriverpickup] = useState("");
   const [driverdropoff, setdriverdropoff] = useState("");
+
+  function Map() {
+
+
+    return (<>
+      <GoogleMap defaultZoom={18} defaultCenter={{ lat: latitude, lng: longitude }} >
+
+        <Marker
+          key='student'
+          position={{
+            lat: latitude,
+            lng: longitude
+          }} />
+      </GoogleMap></>
+    );
+  }
+
+  const MapWrapped = withScriptjs(withGoogleMap(Map));
+
+  const switchTopularCars = () => {
+
+    setTimeout(() => {
+      setActive("pularCars");
+    }, 200);
+  };
+
+  const switchTolocation = () => {
+
+    setTimeout(() => {
+      setActive("location");
+    }, 200);
+  };
+
+
 
 
 
@@ -223,12 +366,12 @@ function Admin() {
       .then(result => setTotaluser(result))
       .catch(error => console.log('error', error));
 
-      fetch("http://localhost:5000/getalluserdatadrivers", requestOptions1)
+    fetch("http://localhost:5000/getalluserdatadrivers", requestOptions1)
       .then(response => response.json())
       .then(result => setTotaluserdriver(result))
       .catch(error => console.log('error', error));
 
-      fetch("http://localhost:5000/getalluserdatastudent", requestOptions1)
+    fetch("http://localhost:5000/getalluserdatastudent", requestOptions1)
       .then(response => response.json())
       .then(result => setTotaluserstudent(result))
       .catch(error => console.log('error', error));
@@ -284,7 +427,7 @@ function Admin() {
 
 
   return (
-    <>  {email === "aliahmed.samoo.1@gmail.com" && <> <Navbar /><div style={({ height: `80px` })}> </div>
+    <>  {email === "cs1812170@szabist.pk" && <> <Navbar /><div style={({ height: `80px` })}> </div>
       <AppContainer >
 
 
@@ -395,7 +538,7 @@ function Admin() {
 
 
 
-         <h1 style={({ marginTop:"100px" })}>User Info</h1>         
+        <h1 style={({ marginTop: "100px" })}>User Information</h1>
         <UserinfoContainer>
 
           {Totaluser.map((Userr) => (<>
@@ -404,42 +547,33 @@ function Admin() {
               <div>
                 <h1> {Userr.name}</h1>
                 <h2> {Userr.email}</h2>
-                <Btn onClick={async () => {
+                <Button danger onClick={async () => {
 
-                  var myHeaders1 = new Headers();
-                  myHeaders1.append("Content-Type", "application/json");
+                  var myHeaders = new Headers();
+                  myHeaders.append("Content-Type", "application/json");
 
-                  var raw1 = JSON.stringify({
-                    "_id": Userr._id,
+                  var raw = JSON.stringify({
+                    "id": Userr._id,
+
 
                   });
 
-                  var requestOptions1 = {
+                  var requestOptions = {
                     method: 'POST',
-                    headers: myHeaders1,
-                    body: raw1,
+                    headers: myHeaders,
+                    body: raw,
                     redirect: 'follow'
                   };
 
+                  const res = await fetch("http://localhost:5000/deleteUserrdattaaaaaaa1", requestOptions)
 
-                  message.info("User removed");
-                  console.log("User removed");
-
-                  const Options = {
-                    method: 'GET',
-
-                    redirect: 'follow'
-                  };
-
-
-
-
-                }}> Remove user</Btn>
+                  await window.location.reload(false);
+                }}> Delete User </Button>
               </div>
             </Studentdetails>   </Studentchart> </>))}
 
         </UserinfoContainer>
-
+        <h1 style={({ marginTop: "100px" })}>Driver Information</h1>
         <UserinfoContainer>
 
           {Totaluserdriver.map((Userr) => (<>
@@ -451,105 +585,151 @@ function Admin() {
                 <h2> {Userr.drivermobile}</h2>
                 <h2> {Userr.driverschool}</h2>
                 <h2> {Userr.driveemail}</h2>
-                <Btn onClick={async () => {
+                <Button danger onClick={async () => {
 
-                  var myHeaders1 = new Headers();
-                  myHeaders1.append("Content-Type", "application/json");
+                  var myHeaders = new Headers();
+                  myHeaders.append("Content-Type", "application/json");
 
-                  var raw1 = JSON.stringify({
-                    "_id": Userr._id,
+                  var raw = JSON.stringify({
+                    "id": Userr._id,
+
 
                   });
 
-                  var requestOptions1 = {
+                  var requestOptions = {
                     method: 'POST',
-                    headers: myHeaders1,
-                    body: raw1,
+                    headers: myHeaders,
+                    body: raw,
                     redirect: 'follow'
                   };
 
+                  const res = await fetch("http://localhost:5000/deleteUserrdattaaaaaaa2", requestOptions)
 
-
-
-
-
-                  message.info("User removed");
-                  console.log("User removed");
-
-                  const Options = {
-                    method: 'GET',
-
-                    redirect: 'follow'
-                  };
-
-
-
-
-
-
-
-
-
-                }}> Remove user</Btn>
+                  await window.location.reload(false);
+                }}> Delete Driver </Button>
               </div>
             </Studentdetails>   </Studentchart> </>))}
 
         </UserinfoContainer>
-
+        <h1 style={({ marginTop: "100px" })}>Student Information</h1>
         <UserinfoContainer>
 
           {Totaluserstudent.map((student) => (<>
 
             <Studentchart><Studentdetails>
               <div>
-              <h2>{student.studentname}</h2>
-                  <h5>School Name : {student.schoolname}</h5>
-                  <h5>School Location : {student.drop}</h5>
-                  <h5>Bus Driver : {student.drivername}</h5>
-                  <h5>Bus Driver ID : {student.busnumberplate}</h5>
-                  <h5>Father name : {student.fathername}</h5>
-                  <h5>Father contact : {student.fathermobile}</h5>
-                <Btn onClick={async () => {
+                <h2>{student.studentname}</h2>
+                <h5>School Name : {student.schoolname}</h5>
+                <h5>School Location : {student.drop}</h5>
+                <h5>Bus Driver : {student.drivername}</h5>
+                <h5>Bus Driver ID : {student.busnumberplate}</h5>
+                <h5>Father name : {student.fathername}</h5>
+                <h5>Father contact : {student.fathermobile}</h5>
+                <Button danger onClick={async () => {
 
-                  var myHeaders1 = new Headers();
-                  myHeaders1.append("Content-Type", "application/json");
 
-                  var raw1 = JSON.stringify({
-                    "_id": student._id,
+                  var myHeaders = new Headers();
+                  myHeaders.append("Content-Type", "application/json");
+
+                  var raw = JSON.stringify({
+                    "id": student._id,
+
 
                   });
 
-                  var requestOptions1 = {
+                  var requestOptions = {
                     method: 'POST',
-                    headers: myHeaders1,
-                    body: raw1,
+                    headers: myHeaders,
+                    body: raw,
                     redirect: 'follow'
                   };
 
+                  await fetch("http://localhost:5000/deleteUserrdattaaaaaaa", requestOptions)
+
+                  await window.location.reload(false);
+                }}> Delete Student </Button>
+                {student.studentstatus === "onboard" && <>
+                  <Btn onClick={async () => {
+
+
+                    setInterval(async () => {
+
+
+
+                      var myHeaders = new Headers();
+                      myHeaders.append("Content-Type", "application/json");
+
+                      var raw = JSON.stringify({
+
+                        "Trackerid": student.Trackerid
+                      });
+
+                      var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: raw,
+                        redirect: 'follow'
+                      };
+
+
+
+                      const res = await fetch("http://localhost:5000/getstudentocation", requestOptions)
+
+                      // if (res.status === 200) {
+
+                      await res.json().then(result => {
+                        setlatitude(parseFloat(result.lat))
+                        setlongitude(parseFloat(result.long))
+
+                        // setlatitude(lattt)
+                        // setlongitude(longg)
+                      })
+                      // }
 
 
 
 
-                  message.info("User removed");
-                  console.log("User removed");
-
-                  const Options = {
-                    method: 'GET',
-
-                    redirect: 'follow'
-                  };
 
 
 
-                }}> Remove user</Btn>
+
+                    }, 1000);
+                    await setActive("location");
+                  }}>Track Bus</Btn>
+                </>
+                }
               </div>
-            </Studentdetails>  
-            <Image src={student.studentimage} alt="Hondacivic" width='50%' height='200px' />
+            </Studentdetails>
+              <Image src={student.studentimage} alt="STUDENT" width='50%' height='200px' />
 
 
-             </Studentchart> </>))}
+            </Studentchart> </>))}
 
         </UserinfoContainer>
+
+
+        <PopcarandlocContainer>
+          <Popcarandlocheader>
+            <Popcarandlocheaderbtn to='/' onClick={switchTolocation} activeStyle >Bus Location</Popcarandlocheaderbtn>
+          </Popcarandlocheader>
+
+
+
+          {active === "location" && <LoationContainer>
+            <div style={{ width: '100%', height: '100%' }}>
+
+              <MapWrapped
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,place&key=AIzaSyAwlpR_lmT3Cj4VW43ifDRpbQ17YqG4hO4`}
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `100%` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
+            </div>
+          </LoationContainer>}
+
+
+
+        </PopcarandlocContainer>
 
 
       </AppContainer>
@@ -558,7 +738,7 @@ function Admin() {
       {email === "null" && <AppContainer> <div width='100px' >  Page Not found Please Sign in to continue <Link to="/signin"> Sign in here</Link> </div>  </AppContainer>
       }
 
-      {email !== "aliahmed.samoo.1@gmail.com" && <AppContainer> <div width='100px' >  Page Not found  <Link to="/home"> home</Link> </div>  </AppContainer>
+      {email !== "cs1812170@szabist.pk" && <AppContainer> <div width='100px' >  Page Not found  <Link to="/home"> home</Link> </div>  </AppContainer>
       }
     </>
 

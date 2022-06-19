@@ -42,10 +42,10 @@ const Navbar = () => {
     }, 200);
   };
 
-  const onClickkk =()=>{
+  const onClickkk = () => {
 
     localStorage.removeItem('email')
-     localStorage.removeItem('name')
+    localStorage.removeItem('name')
 
   }
 
@@ -54,7 +54,7 @@ const Navbar = () => {
     <div >
 
 
-      <Nav style={{backgroundColor: "lightblue"}}>
+      <Nav style={{ backgroundColor: "lightblue" }}>
         <Link to='/home'>
           {/* <div>logo</div> */}
           <h1>Trackify</h1>
@@ -63,59 +63,59 @@ const Navbar = () => {
         <NavMenu>
 
 
-        {email != 'null' &&  <>{name != 'driver' &&  <NavLink to='/home' activeStyle >
+          {email != 'cs1812170@szabist.pk' && <>{name != 'driver' && <NavLink to='/home' activeStyle >
             Home
           </NavLink>
-          
-  }
-         </> }
+
+          }
+          </>}
 
 
           <NavLink to='/about' activeStyle>
             About
           </NavLink>
           <NavLink to='/bookingform' activeStyle>
-            contact
+            Contact
           </NavLink>
 
 
-   
 
-         
-          {email != 'null' && <>{name === 'driver' &&  <NavLink to='/services' activeStyle>
+
+
+          {email != 'null' && <>{name === 'driver' && <NavLink to='/services' activeStyle>
             Student
-          </NavLink>  }
-         </> }
+          </NavLink>}
+          </>}
 
 
           <NavLink to='/fee' activeStyle>
-          Fee Schedule
+            Fee Schedule
           </NavLink>
 
-        {email != 'null' &&  <>{name != 'driver' &&  <NavLink to='/profile' activeStyle>
+          {email != 'null' && <>{name != 'driver' && <NavLink to='/profile' activeStyle>
             Profile
-          </NavLink>  }
-         </> }
+          </NavLink>}
+          </>}
 
-         {email === 'null' && <NavLink to='/login'  > Sign In</NavLink>}
+          {email === 'null' && <NavLink to='/login'  > Sign In</NavLink>}
 
-         {email != 'null' && <NavLink to='/login' onClick={()=>{ 
-           localStorage.setItem('email' , "null")
-           localStorage.removeItem('name')  
-            }}>Log out</NavLink> }
+          {email != 'null' && <NavLink to='/login' onClick={() => {
+            localStorage.setItem('email', "null")
+            localStorage.removeItem('name')
+          }}>Log out</NavLink>}
 
-{email == 'aliahmed.samoo.1@gmail.com' && <NavLink to='/admin' onClick={()=>{ 
-          
-            }}>Admin</NavLink> }
+          {email == 'cs1812170@szabist.pk' && <NavLink to='/admin' onClick={() => {
 
-        
-      
+          }}>Admin</NavLink>}
+
+
+
         </NavMenu>
 
 
       </Nav>
 
-      
+
     </div>
   );
 };

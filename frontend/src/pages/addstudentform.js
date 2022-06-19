@@ -524,7 +524,7 @@ function Addstudentform() {
           <div className='form-content-right'>
             <List>
 
-              <h1>select bus</h1>
+              <h1>Select Bus</h1>
 
               <Buses>
 
@@ -551,7 +551,7 @@ function Addstudentform() {
                     setdriveremail(Driver.driveemail)
                     setPopupsub(true)
 
-                  }} >select</Btn>
+                  }} >Select</Btn>
                 </Buses1>
 
               </>))}
