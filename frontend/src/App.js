@@ -24,6 +24,8 @@ import { FooterContainer } from "./components/footer/footer";
 import ScrollToTop from './components/ScrollToTop'
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 
+import Test from './pages/test';
+
 
 
 const style = {
@@ -67,6 +69,7 @@ function App() {
 
           <Route path='/login' component={SignIn} />
           <Route path='/fee' component={Fee} />
+          <Route path='/test' component={Test} />
 
         </Switch>
 
